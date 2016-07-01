@@ -1,0 +1,17 @@
+# Various teaks and commands for Cobalt Strike Beacons
+# Thanks to Raffi for his patience and help!
+# vulp1n3@gmail.com
+
+# Change the prompt shown in beacon console output to match
+# [host] user/pid> 
+# bid, from, text, when
+set BEACON_INPUT {
+    $bd = bdata($1);
+    if ($2 eq mynick()) {
+        return "\U[" . $bd['computer'] . "] " . $bd['user'] . "/" . $bd['pid'] . "\o> $3";
+    } else {
+        return "$2 \U[" . $bd['computer'] . "] " . $bd['user'] . "/" . $bd['pid'] . "\o> $3";
+    }
+}
+
+
